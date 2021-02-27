@@ -14,7 +14,26 @@
   modules = import ./modules; # NixOS modules
   overlays = import ./overlays; # nixpkgs overlays
 
-  example-package = pkgs.callPackage ./pkgs/example-package { };
-  # some-qt5-package = pkgs.libsForQt5.callPackage ./pkgs/some-qt5-package { };
-  # ...
+  ytmdl = pkgs.callPackage ./pkgs/ytmdl {
+    bs4 = pkgs.callPackage ./pkgs/bs4 {
+      python38Packages = pkgs.python38Packages;
+    };
+    simber = pkgs.callPackage ./pkgs/simber {
+      python38Packages = pkgs.python38Packages;
+    };
+    pydes = pkgs.callPackage ./pkgs/pydes {
+      python38Packages = pkgs.python38Packages;
+    };
+    downloader-cli = pkgs.callPackage ./pkgs/downloader-cli {
+      fetchFromGitHub = pkgs.fetchFromGitHub;
+      python38Packages = pkgs.python38Packages;
+    };
+    itunespy = pkgs.callPackage ./pkgs/itunespy {
+      python38Packages = pkgs.python38Packages;
+    };
+    youtube-search = pkgs.callPackage ./pkgs/youtube-search {
+      python38Packages = pkgs.python38Packages;
+    };
+    python38Packages = pkgs.python38Packages;
+  };
 }
