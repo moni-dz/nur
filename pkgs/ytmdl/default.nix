@@ -1,5 +1,5 @@
 { lib
-, python38Packages
+, python3Packages
 , simber
 , pydes
 , youtube-search
@@ -8,7 +8,7 @@
 , bs4
 }:
 
-with python38Packages;
+with python3Packages;
 
 buildPythonPackage rec {
   pname = "ytmdl";
@@ -21,7 +21,7 @@ buildPythonPackage rec {
 
   doCheck = false; # NOTE: disable to prevent false fails
 
-  propagatedBuildInputs = with python38Packages; [
+  propagatedBuildInputs = [
     simber
     pydes
     youtube-search
