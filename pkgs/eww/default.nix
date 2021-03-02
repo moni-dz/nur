@@ -2,10 +2,7 @@
 
 with pkgs;
 
-let
-  fenix = callPackage "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/packages.nix" { };
-in
-(makeRustPlatform { inherit (fenix.default) cargo rustc; }).buildRustPackage rec {
+rustPlatform.buildRustPackage rec {
   pname = "eww";
   version = "unstable-2021-02-27";
 
@@ -16,7 +13,7 @@ in
     sha256 = "sha256-iHHXv1R9X5is0A5GwMFSHEdi043Ad9FdFUQ4YtZ3w+s=";
   };
 
-  nativeBuildInputs = [ pkg-config ];
+  nativeBuildInputs = [ pkg-config rust-bin.nightly.latest.rust ];
 
   buildInputs = [
     gtk3
@@ -36,6 +33,5 @@ in
       "A standalone widget system made in Rust to add AwesomeWM like widgets to any WM";
     homepage = "https://github.com/elkowar/eww";
     license = licenses.mit;
-    maintainers = with maintainers; [ fortuneteller2k ];
   };
 }

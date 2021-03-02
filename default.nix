@@ -1,11 +1,21 @@
 { pkgs ? import <nixpkgs> { } }:
 
-{
+rec {
   lib = import ./lib { inherit pkgs; };
   modules = import ./modules;
   overlays = import ./overlays;
 
-  eww = pkgs.callPackage ./pkgs/eww { inherit pkgs; };
+  impure.eww = let 
+    rust-overlay = import (pkgs.fetchFromGitHub {
+      owner = "oxalica";
+      repo = "rust-overlay";
+      rev = "1d38b7c3bb2f317b935f20ac7e01db93b151770f";
+      sha256 = "sha256-mjTR3dgUrha4tqNpEEYUXx38wXlUp4ftlhx4wfQmrzs=";
+    }).out;
+    
+  in pkgs.callPackage ./pkgs/eww {
+    pkgs = pkgs.extend rust-overlay;
+  };
 
   ytmdl = pkgs.callPackage ./pkgs/ytmdl {
     bs4 = pkgs.callPackage ./pkgs/bs4 {
