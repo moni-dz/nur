@@ -3,18 +3,9 @@
 with pkgs;
 
 let
-  moz-overlay = fetchFromGitHub {
-    owner = "mozilla";
-    repo = "nixpkgs-mozilla";
-    rev = "8c007b60731c07dd7a052cce508de3bb1ae849b4";
-    sha256 = "sha256-RsNPnEKd7BcogwkqhaV5kI/HuNC4flH/OQCC/4W5y/8=";
-  };
-
-  mozilla = callPackage "${moz-overlay.out}/package-set.nix" { };
-
-  nightly-rust = (mozilla.rustChannelOf { channel = "nightly"; date = "2021-03-01"; }).rust;
+  fenix = callPackage "${fetchTarball "https://github.com/nix-community/fenix/archive/main.tar.gz"}/packages.nix" { };
 in
-(makeRustPlatform { cargo = nightly-rust; rustc = nightly-rust; }).buildRustPackage rec {
+(makeRustPlatform { inherit (fenix.default) cargo rustc; }).buildRustPackage rec {
   pname = "eww";
   version = "unstable-2021-02-27";
 
