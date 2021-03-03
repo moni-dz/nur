@@ -17,6 +17,5 @@ buildPythonPackage rec {
     description = "A simple, minimal and powerful logging library for Python";
     homepage = "https://github.com/deepjyoti30/simber";
     license = licenses.mit;
-    maintainers = with maintainers; [ fortuneteller2k ];
   };
 }

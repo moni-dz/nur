@@ -18,6 +18,5 @@ buildPythonPackage rec {
       "Tool for searching for youtube videos to avoid using their heavily rate-limited API";
     homepage = "https://github.com/joetats/youtube_search";
     license = licenses.mit;
-    maintainers = with maintainers; [ fortuneteller2k ];
   };
 }

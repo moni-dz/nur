@@ -18,6 +18,5 @@ buildPythonPackage rec {
       "A simple library to fetch data from the iTunes Store API made for Python >= 3.5";
     homepage = "https://github.com/sleepyfran/itunespy";
     license = licenses.mit;
-    maintainers = with maintainers; [ fortuneteller2k ];
   };
 }

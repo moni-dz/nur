@@ -17,6 +17,5 @@ buildPythonPackage rec {
     description = "HTML and XML parser (dummy package)";
     homepage = "https://www.crummy.com/software/BeautifulSoup/bs4/";
     license = licenses.mit;
-    maintainers = with maintainers; [ fortuneteller2k ];
   };
 }
