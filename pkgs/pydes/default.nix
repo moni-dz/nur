@@ -16,5 +16,6 @@ buildPythonPackage rec {
       "Pure python implementation of DES and TRIPLE DES encryption algorithm";
     homepage = "https://github.com/twhiteman/pyDes";
     license = licenses.mit;
+    maintainers = with maintainers; [ fortuneteller2k ];
   };
 }

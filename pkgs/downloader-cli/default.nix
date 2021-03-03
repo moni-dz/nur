@@ -20,5 +20,6 @@ buildPythonPackage rec {
       "A simple downloader written in Python with an awesome customizable progressbar";
     homepage = "https://github.com/deepjyoti30/downloader-cli";
     license = licenses.mit;
+    maintainers = with maintainers; [ fortuneteller2k ];
   };
 }
